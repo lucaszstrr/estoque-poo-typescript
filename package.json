@@ -1,0 +1,22 @@
+{
+  "name": "estoque",
+  "version": "1.0.0",
+  "description": "sistema de gerenciamento de estoque usando POO",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.3"
+  }
+}
