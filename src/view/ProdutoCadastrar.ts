@@ -37,16 +37,13 @@ export default class ProdutoCadastrar {
         return this.controller.produtoService.cadastrarAlimento(nome, preco, quantidade, validade, perecivel);
     }
 
-    private cadastrarVestuario(): void {
-        const produto = this.controller.getNovoVestuario();
+    private cadastrarVestuario(): string {
+        const nome = this.prompt("Nome do alimento: ");
+        const preco = parseFloat(this.prompt("Preço: R$"));
+        const quantidade = parseInt(this.prompt("Quantidade em estoque: "));
+        const tamanho = this.prompt("Tamanho (P/M/G/GG): ");
+        const material = this.prompt("Material (ex: algodão, poliéster): ");
 
-        produto.setNome(this.prompt("Nome do vestuário: "));
-        produto.setPreco(parseFloat(this.prompt("Preço (R$): ")));
-        produto.setQuantidade(parseInt(this.prompt("Quantidade em estoque: ")));
-        produto.tamanho = this.prompt("Tamanho (P/M/G/GG): ");
-        produto.material = this.prompt("Material (ex: algodão, poliéster): ");
- 
-        this.controller.database.produtos.push(produto);
-        console.log("Vestuário cadastrado com sucesso!\n");
+        return this.controller.produtoService.cadastrarVestuario(nome, preco, quantidade, tamanho, material);
     }
 }
