@@ -1,6 +1,22 @@
 import Produto from "./Produto";
 
 export default class Vestuario extends Produto{
-    public tamanho: string;
-    public material: string;
+    private tamanho: string;
+    private material: string;
+
+    public getTamanho(): string {
+        return this.tamanho;
+    }
+
+    public getMaterial(): string {
+        return this.material;
+    }
+
+    public setTamanho(tamanho: string): void {
+        this.tamanho = tamanho;
+    }
+
+    public setMaterial(material: string): void {
+        this.material = material;
+    }
 }
