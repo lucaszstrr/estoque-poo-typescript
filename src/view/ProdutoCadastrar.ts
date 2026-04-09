@@ -27,17 +27,14 @@ export default class ProdutoCadastrar {
         }
     }
 
-    private cadastrarAlimento(): void {
-        const produto = this.controller.getNovoAlimento();
+    private cadastrarAlimento(): string {
+        const nome = this.prompt("Nome do alimento: ");
+        const preco = parseFloat(this.prompt("Preço: R$"));
+        const quantidade = parseInt(this.prompt("Quantidade em estoque: "));
+        const validade = this.prompt("Data de validade (dd/mm/aaaa): ");
+        const perecivel = this.prompt("É perecível? (s/n): ").toLowerCase() === "s";
 
-        produto.setNome(this.prompt("Nome do alimento: "));
-        produto.setPreco(parseFloat(this.prompt("Preço (R$): ")));
-        produto.setQuantidade(parseInt(this.prompt("Quantidade em estoque: ")));
-        produto.validade = this.prompt("Data de validade (dd/mm/aaaa): ");
-        produto.perecivel = this.prompt("É perecível? (s/n): ").toLowerCase() === "s";
- 
-        this.controller.database.produtos.push(produto);
-        console.log("Alimento cadastrado com sucesso!\n");
+        return this.controller.produtoService.cadastrarAlimento(nome, preco, quantidade, validade, perecivel);
     }
 
     private cadastrarVestuario(): void {
