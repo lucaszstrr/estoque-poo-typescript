@@ -22,8 +22,8 @@ export default class ProdutoService {
         alimento.setNome(nome);
         alimento.setPreco(preco);
         alimento.setQuantidade(quantidade);
-        alimento.validade = validade;
-        alimento.perecivel = perecivel;
+        alimento.setValidade(validade);
+        alimento.setPerecivel(perecivel);
 
         this.database.produtos.push(alimento);
         return "Alimento cadastrado com sucesso!";
@@ -38,8 +38,8 @@ export default class ProdutoService {
         vestuario.setNome(nome);
         vestuario.setPreco(preco);
         vestuario.setQuantidade(quantidade);
-        vestuario.tamanho = tamanho;
-        vestuario.material = material;
+        vestuario.setTamanho(tamanho);
+        vestuario.setMaterial(material);
 
         this.database.produtos.push(vestuario);
         return "Vestuário cadastrado com sucesso!";
