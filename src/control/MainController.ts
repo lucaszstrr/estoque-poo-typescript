@@ -2,12 +2,14 @@ import Database from "../Database";
 import Alimento from "../model/Alimento";
 import Produto from "../model/Produto";
 import Vestuario from "../model/Vestuario";
+import ProdutoService from "../service/ProdutoService";
 import FirstScreen from "../view/FirstScreen";
 
 export default class MainController {
     //Inicia o sistema na tela inicial
     private firstScreen!: FirstScreen;
     public database: Database = new Database();
+    public produtoService: ProdutoService = new ProdutoService(this.database);
 
     constructor() {
         this.firstScreen = new FirstScreen(this);
@@ -26,27 +28,11 @@ export default class MainController {
     }
 
     public listarProdutos(): Produto[]{
-        return this.database.produtos;
+        return this.produtoService.listarProdutos();
     }
 
     public removerProduto(indiceProduto: number, quantidade: number): string{
-        let produto = this.database.produtos[indiceProduto];
-
-        if (!produto) {
-            return "Produto não existe";
-        }
-
-        if (quantidade <= 0) {
-            return "Quantidade inválida";
-        }
-
-        if (quantidade > produto.getQuantidade()) {
-            return "Quantidade inválida";
-        }
-
-        produto.setQuantidade(produto.getQuantidade() - quantidade);
-
-        return `A quantidade atual do produto ${produto.getNome()} é de ${produto.getQuantidade()}`
+        return this.produtoService.removerProduto(indiceProduto, quantidade);
     }
 
 }
