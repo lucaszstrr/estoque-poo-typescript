@@ -1,15 +1,16 @@
 import MainController from "../control/MainController";
 import promptSync from 'prompt-sync';
-import ProdutoCadastrar from "./ProdutoCadastrar";
-import ProdutoRemover from "./ProdutoRemover";
+import ProdutoGerenciamento from "./ProdutoGerenciamento";
 
 export default class FirstScreen {
 
     private prompt = promptSync();
     private controller: MainController;
+    private gerenciamento: ProdutoGerenciamento;
 
     constructor(controller: MainController) {
         this.controller = controller;
+        this.gerenciamento = new ProdutoGerenciamento(controller);
         this.mainMenu();
     }
 
@@ -21,13 +22,13 @@ export default class FirstScreen {
             let opcao = parseInt(this.prompt(""));
             switch (opcao) {
                 case 1:
-                    new ProdutoCadastrar(this.controller);
+                    this.gerenciamento.cadastrarProduto();
                     break;
                 case 2:
                     this.listarEstoque();
                     break;
                 case 3:
-                    new ProdutoRemover(this.controller);
+                    this.gerenciamento.removerProduto();
                     break;
                 case 4:
                     console.log("Você escolheu encerrar o sistema. Até logo!")
