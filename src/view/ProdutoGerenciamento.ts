@@ -36,7 +36,7 @@ export default class ProdutoGerenciamento{
     }
 
     private cadastrarVestuario(): string {
-        const nome = this.prompt("Nome do alimento: ");
+        const nome = this.prompt("Nome da peça: ");
         const preco = parseFloat(this.prompt("Preço: R$"));
         const quantidade = parseInt(this.prompt("Quantidade em estoque: "));
         const tamanho = this.prompt("Tamanho (P/M/G/GG): ");
