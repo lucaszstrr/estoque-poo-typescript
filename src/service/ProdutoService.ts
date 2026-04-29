@@ -2,6 +2,7 @@ import Database from "../Database";
 import Alimento from "../model/Alimento";
 import Produto from "../model/Produto";
 import Vestuario from "../model/Vestuario";
+import { TamanhoVestuario } from "../enums/TamanhoVestuario";
 
 export default class ProdutoService {
     private database: Database;
@@ -34,11 +35,17 @@ export default class ProdutoService {
         if (preco < 0) return "Preço inválido";
         if (quantidade < 0) return "Quantidade inválida";
 
+        if (tamanho != TamanhoVestuario.PEQUENO && tamanho != TamanhoVestuario.MEDIO && tamanho != TamanhoVestuario.GRANDE && tamanho != TamanhoVestuario.EXTRA_GRANDE){
+            console.log("\nTamanho inválido! Digite apenas P, M, G ou GG\n");
+            return;
+        }
+        
+        const tamanhoEnum = tamanho as TamanhoVestuario;
         const vestuario = new Vestuario();
         vestuario.setNome(nome);
         vestuario.setPreco(preco);
         vestuario.setQuantidade(quantidade);
-        vestuario.setTamanho(tamanho);
+        vestuario.setTamanho(tamanhoEnum);
         vestuario.setMaterial(material);
 
         this.database.produtos.push(vestuario);
