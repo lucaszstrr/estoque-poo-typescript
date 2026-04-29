@@ -1,7 +1,8 @@
+import { TamanhoVestuario } from "../enums/TamanhoVestuario";
 import Produto from "./Produto";
 
 export default class Vestuario extends Produto{
-    private tamanho: string;
+    private tamanho: TamanhoVestuario;
     private material: string;
 
     public getTamanho(): string {
@@ -12,7 +13,7 @@ export default class Vestuario extends Produto{
         return this.material;
     }
 
-    public setTamanho(tamanho: string): void {
+    public setTamanho(tamanho: TamanhoVestuario): void {
         this.tamanho = tamanho;
     }
 
