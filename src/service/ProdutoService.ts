@@ -52,15 +52,23 @@ export default class ProdutoService {
         return "Vestuário cadastrado com sucesso!";
     }
 
-    public removerProduto(indiceProduto: number, quantidade: number): string {
-        const produto = this.database.produtos[indiceProduto];
+    public removerProduto(indiceProduto: number, quantidade: number): string;
+    public removerProduto(nomeProduto: string, quantidade: number): string;
+
+    public removerProduto(identificador: number | string, quantidade: number): string {
+        let produto;
+
+        if (typeof identificador === "number") {
+            produto = this.database.produtos[identificador];
+        } else {
+            produto = this.database.produtos.find(p => p.getNome() === identificador);
+        }
 
         if (!produto) return "Produto não existe";
         if (quantidade <= 0) return "Quantidade inválida";
         if (quantidade > produto.getQuantidade()) return "Quantidade maior que o estoque";
 
         produto.setQuantidade(produto.getQuantidade() - quantidade);
-        
         return `A quantidade atual do produto ${produto.getNome()} é de ${produto.getQuantidade()}`;
     }
 
