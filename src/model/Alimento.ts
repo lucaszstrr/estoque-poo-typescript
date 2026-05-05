@@ -20,7 +20,7 @@ export default class Alimento extends Produto{
         this.perecivel = perecivel;
     }
 
-    public exibirInfo(): string {
-        return `[Alimento] ${this.nome} | R$${this.preco.toFixed(2)} | Qtd: ${this.quantidade} | Validade: ${this.validade} | Perecível: ${this.perecivel ? "Sim" : "Não"}`;
+    public override infoProduto(): string {
+        return `[Alimento] Nome: ${this.nome} | Preço: R$${this.preco} | Qtd: ${this.quantidade} | Validade: ${this.validade} | Perecível: ${this.perecivel ? "Sim" : "Não"}`;
     }
 }
