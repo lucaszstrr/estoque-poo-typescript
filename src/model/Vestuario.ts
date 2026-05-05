@@ -20,4 +20,8 @@ export default class Vestuario extends Produto{
     public setMaterial(material: string): void {
         this.material = material;
     }
+
+    public override infoProduto(): string {
+        return `[Vestuário] Nome: ${this.nome} | Preço: R$${this.preco} | Qtd: ${this.quantidade} | Tamanho: ${this.tamanho} | Material: ${this.material}`;
+    }
 }
