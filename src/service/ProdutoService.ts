@@ -61,7 +61,7 @@ export default class ProdutoService {
         if (typeof identificador === "number") {
             produto = this.database.produtos[identificador];
         } else {
-            produto = this.database.produtos.find(p => p.getNome() === identificador);
+            produto = this.database.produtos.find(produto => produto.getNome() === identificador);
         }
 
         if (!produto) return "Produto não existe";
